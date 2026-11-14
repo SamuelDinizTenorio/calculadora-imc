@@ -1,4 +1,4 @@
-package com.samuel.person;
+package com.samuel.model;
 
 import com.samuel.exception.InvalidDataException;
 
