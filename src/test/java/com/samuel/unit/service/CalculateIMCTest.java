@@ -1,4 +1,4 @@
-package service;
+package com.samuel.unit.service;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
