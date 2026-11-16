@@ -1,4 +1,4 @@
-package model;
+package com.samuel.unit.model;
 
 import java.util.stream.Stream;
 
