@@ -1,9 +1,10 @@
-package com.samuel.service;
+package service;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import com.samuel.model.Person;
+import com.samuel.service.CalculateIMC;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
