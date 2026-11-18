@@ -33,7 +33,9 @@ public class IMCCli {
                 out.print("Digite a operação: ");
                 option = Integer.parseInt(scanner.nextLine());
                 readOption(option);
-            } catch (RuntimeException e) {
+            } catch (NumberFormatException e) {
+                out.println("Opção inválida! Digite um número.");
+            }catch (RuntimeException e) {
                 out.println("[Erro Inesperado]: " + e.getMessage());
             }
     
@@ -81,21 +83,26 @@ public class IMCCli {
             out.print("Digite seu nome: ");
             name = scanner.nextLine();
     
-            if (name.isBlank()) {
-                out.println("\nNome inválido!\nO nome não pode ser nulo ou vazio!");
+            if (name == null || name.isBlank()) {
+                out.println("Nome inválido! O nome não pode está em branco.");
             }
-        } while (name.isBlank());
+        } while (name == null || name.isBlank());
         return name;
     }
 
     private double readWeight() {
         double weight = 0.0;
+        String errorMessage = "Peso inválido! Digite um número válido.";
         do {
-            out.print("Digite seu peso: ");
-            weight = Double.parseDouble(scanner.nextLine());
-
-            if (weight <= 0 || !Double.isFinite(weight)) {
-                out.println("\nPeso inválido!\nO peso não pode ser menor ou igual a zero e precisa ser um número finito!");
+            try {
+                out.print("Digite seu peso: ");
+                weight = Double.parseDouble(scanner.nextLine());
+    
+                if (weight <= 0 || !Double.isFinite(weight)) {
+                    out.println(errorMessage);
+                }
+            } catch (NumberFormatException e) {
+                out.println(errorMessage);
             }
         } while (weight <= 0 || !Double.isFinite(weight));
         return weight;
@@ -103,12 +110,17 @@ public class IMCCli {
 
     private double readHeight() {
         double height = 0.0;
+        String errorMessage = "Altura inválida! Digite um número válido.";
         do {
-            out.print("Digite sua altura: ");
-            height = Double.parseDouble(scanner.nextLine());
-
-            if (height <= 0 || !Double.isFinite(height)) {
-                out.println("\nAltura inválida!\nA altura não pode ser menor ou igual a zero e precisa ser um número finito!");
+            try {
+                out.print("Digite sua altura: ");
+                height = Double.parseDouble(scanner.nextLine());
+    
+                if (height <= 0 || !Double.isFinite(height)) {
+                    out.println(errorMessage);
+                }
+            } catch (NumberFormatException e) {
+                out.println(errorMessage);
             }
         } while (height <= 0 || !Double.isFinite(height));
         return height;
