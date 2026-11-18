@@ -135,7 +135,7 @@ public class IMCCli {
     }
 
     private void pause() {
-        out.println("\nPrecione Enter para continuar...");
+        out.println("\nPressione Enter para continuar...");
         scanner.nextLine();
     }
 }
