@@ -61,7 +61,7 @@ class IMCCliIT {
 
             assertThat(getOutput())
                 .contains(
-                    "Opção inválida!",
+                    "Opção não reconhecida! Escolha uma opção disponível no menu.",
                     "Encerrando calculadora de IMC..."
                 );
         }
@@ -74,7 +74,7 @@ class IMCCliIT {
 
             assertThat(getOutput())
                 .contains(
-                    "Opção inválida! Digite um número.",
+                    "Opção inválida! Digite um número correspondente ao menu.",
                     "Encerrando calculadora de IMC..."
                 );
         }
@@ -163,9 +163,9 @@ class IMCCliIT {
 
             assertThat(getOutput())
                 .contains(
-                    "Nome inválido! O nome não pode está em branco.",
-                    "Peso inválido! Digite um número válido.",
-                    "Altura inválida! Digite um número válido.",
+                    "O nome não pode ficar em branco. Digite novamente.",
+                    "Peso inválido! Informe um número finito maior que zero (em kg).",
+                    "Altura inválida! Informe um número finito maior que zero (em metros).",
                     "Resultado do IMC de Maria:",
                     "Classificação: Sobrepeso",
                     "Encerrando calculadora de IMC..."
@@ -193,8 +193,8 @@ class IMCCliIT {
 
             assertThat(getOutput())
                 .contains(
-                    "Opção inválida! Digite um número.",
-                    "Opção inválida!",
+                    "Opção inválida! Digite um número correspondente ao menu.",
+                    "Opção não reconhecida! Escolha uma opção disponível no menu.",
                     "Resultado do IMC de Carlos:",
                     "Classificação: Peso normal",
                     "Encerrando calculadora de IMC..."
