@@ -34,9 +34,9 @@ public class IMCCli {
                 option = Integer.parseInt(scanner.nextLine());
                 readOption(option);
             } catch (NumberFormatException e) {
-                out.println("Opção inválida! Digite um número.");
+                out.println("Opção inválida! Digite um número correspondente ao menu.");
             }catch (RuntimeException e) {
-                out.println("[Erro Inesperado]: " + e.getMessage());
+                out.println("Ocerreu um erro inesperado. Por favor tente novamente mais tarde.");
             }
     
             if (option != 0) {
@@ -68,11 +68,11 @@ public class IMCCli {
                     String result = calculateImc.getResult(person);
                     out.println("\n" + result);
                 } catch (InvalidDataException e) {
-                    out.println("Erro de validação: " + e.getMessage());
+                    out.println("Não foi possível realizar o cálculo: dados inválidos.");
                 }
             }
             default -> {
-                out.println("Opção inválida!");
+                out.println("Opção não reconhecida! Escolha uma opção disponível no menu.");
             }
         }
     }
@@ -83,16 +83,16 @@ public class IMCCli {
             out.print("Digite seu nome: ");
             name = scanner.nextLine();
     
-            if (name == null || name.isBlank()) {
-                out.println("Nome inválido! O nome não pode está em branco.");
+            if (name.isBlank()) {
+                out.println("O nome não pode ficar em branco. Digite novamente.");
             }
-        } while (name == null || name.isBlank());
+        } while (name.isBlank());
         return name;
     }
 
     private double readWeight() {
         double weight = 0.0;
-        String errorMessage = "Peso inválido! Digite um número válido.";
+        String errorMessage = "Peso inválido! Informe um número finito maior que zero (em kg).";
         do {
             try {
                 out.print("Digite seu peso: ");
@@ -110,7 +110,7 @@ public class IMCCli {
 
     private double readHeight() {
         double height = 0.0;
-        String errorMessage = "Altura inválida! Digite um número válido.";
+        String errorMessage = "Altura inválida! Informe um número finito maior que zero (em metros).";
         do {
             try {
                 out.print("Digite sua altura: ");
