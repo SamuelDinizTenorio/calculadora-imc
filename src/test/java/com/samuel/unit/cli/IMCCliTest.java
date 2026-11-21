@@ -147,7 +147,7 @@ class IMCCliTest {
 
             // Assert
             assertThat(getOutput())
-                .contains("Opção inválida! Digite um número.");
+                .contains("Opção inválida! Digite um número correspondente ao menu.");
 
             verifyNoInteractions(calculateIMC);
         }
@@ -165,7 +165,7 @@ class IMCCliTest {
 
             // Assert
             assertThat(getOutput())
-                .contains("Opção inválida!");
+                .contains("Opção não reconhecida! Escolha uma opção disponível no menu.");
 
             verifyNoInteractions(calculateIMC);
         }
@@ -264,7 +264,7 @@ class IMCCliTest {
             String expectedMessage = expectedResult(validName);
 
             String expectedErrorMessage = 
-                "Nome inválido! O nome não pode está em branco.";
+                "O nome não pode ficar em branco. Digite novamente.";
 
             IMCCli cli = createCliWithInput(simulatedInput);
 
@@ -302,7 +302,7 @@ class IMCCliTest {
             String expectedMessage = expectedResult(name);
 
             String expectedErrorMessage = 
-                "Peso inválido! Digite um número válido.";
+                "Peso inválido! Informe um número finito maior que zero (em kg).";
 
             IMCCli cli = createCliWithInput(simulatedInput);
 
@@ -340,7 +340,7 @@ class IMCCliTest {
             String expectedMessage = expectedResult(name);
 
             String expectedErrorMessage = 
-                "Altura inválida! Digite um número válido.";
+                "Altura inválida! Informe um número finito maior que zero (em metros).";
 
             IMCCli cli = createCliWithInput(simulatedInput);
 
@@ -378,7 +378,7 @@ class IMCCliTest {
             String expectedMessage = expectedResult(name);
 
             String expectedErrorMessage = 
-                "Peso inválido! Digite um número válido.";
+                "Peso inválido! Informe um número finito maior que zero (em kg).";
 
             IMCCli cli = createCliWithInput(simulatedInput);
 
@@ -416,7 +416,7 @@ class IMCCliTest {
             String expectedMessage = expectedResult(name);
 
             String expectedErrorMessage = 
-                "Altura inválida! Digite um número válido.";
+                "Altura inválida! Informe um número finito maior que zero (em metros).";
 
             IMCCli cli = createCliWithInput(simulatedInput);
 
@@ -442,7 +442,7 @@ class IMCCliTest {
         void shouldDisplayValidationErrorWhenServiceThrowsInvalidDataException() {
             // Arrange
             String simulatedInput = "1\nJoão\n70.0\n1.75\n\n0\n";
-            String errorMessage = "Dados inválidos para cálculo.";
+            String errorMessage = "Não foi possível realizar o cálculo: dados inválidos.";
 
             IMCCli cli = createCliWithInput(simulatedInput);
 
@@ -454,7 +454,7 @@ class IMCCliTest {
 
             // Assert
             assertThat(getOutput())
-                .contains("Erro de validação: " + errorMessage);
+                .contains(errorMessage);
 
             verify(calculateIMC).getResult(any(Person.class));
         }
@@ -464,7 +464,7 @@ class IMCCliTest {
         void shouldHandleUnexpectedExceptionFromService() {
             // Arrange
             String simulatedInput = "1\nJoão\n70.0\n1.75\n\n0\n";
-            String errorMessage = "Falha inesperada no cálculo.";
+            String errorMessage = "Ocerreu um erro inesperado. Por favor tente novamente mais tarde.";
 
             IMCCli cli = createCliWithInput(simulatedInput);
 
@@ -476,7 +476,7 @@ class IMCCliTest {
 
             // Assert
             assertThat(getOutput())
-                .contains("[Erro Inesperado]: " + errorMessage);
+                .contains(errorMessage);
 
             verify(calculateIMC).getResult(any(Person.class));
         }
